@@ -1,0 +1,77 @@
+﻿@model List<Modelo.VistaResumenJugadore>
+@{
+    ViewData["Title"] = "GetStats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .img {
+        background-size: cover;
+        background-position: center;
+        background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp');
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #005A82;
+        opacity: 0.1;
+        color: white;
+    }
+    .btn-dark{
+        background-color: #010a13;
+        border-color: #010a13;
+        color: #010A13;
+        background: linear-gradient(to right, #785A28, #C89B3C);
+        font-size: large;
+    }
+
+    .btn-danger {
+        background-color: #010a13;
+        border-color: #010a13;
+        color: #010A13;
+        background: linear-gradient(to right, #005A82, #0AC8B9);
+        font-size: large;
+    }
+</style>
+<div class="text-center">
+    <h1 class="prueba" style="color: #C89B3C;"><i class="fa-solid fa-chart-line" style="color: #c89b3c;"></i> Estadisticas</h1>
+    <hr style="background-color:#C89B3C; height: 2px" />
+</div>
+<div class="btn-group d-flex" role="group" aria-label="Button group with nested dropdown"  >
+    <button type="button" style="" class="btn btn-danger">General</button>
+    <button type="button" class="btn btn-dark">Ronda 1</button>
+    <button type="button" class="btn btn-dark">Ronda 2</button>
+    <button type="button" class="btn btn-dark">Ronda3</button>
+    <button type="button" class="btn btn-dark">Ronda 4</button>
+</div>
+<br />
+<table class="table table-bordered table-hover" style="background-color:#010a13; border-color: #C89B3C">
+    <caption style="color: #C89B3C; font-weight:bold">Estadisticas Generales</caption>
+    <thead class="img" style="color: #C89B3C; font-weight:bold">
+        <tr>
+            <td class="text-center "><i class="fa-solid fa-circle-user" style="color: #c89b3c;"></i> Jugador</td>
+            <td class="text-center "><i class="fa-solid fa-hand-peace" style="color: #c89b3c;"></i> Victorias</td>
+            <td class="text-center "><i class="fa-solid fa-thumbs-down" style=" color: #c89b3c;"></i> Derrotas</td>
+            <td class="text-center "><i class="fa-solid fa-coins" style=" color: #c89b3c;"></i> CS total</td>
+            <td class="text-center "> <i class="fa-solid fa-clock" style=" color: #c89b3c;"></i> Promedio x Partida</td>
+            <td class="text-center ">Champs</td>
+        </tr>
+    </thead>
+    <tbody style="color: #C89B3C">
+        @{
+            int contador = 0; // Inicializamos el contador
+        }
+
+        @foreach (Modelo.VistaResumenJugadore jugador in Model)
+        {
+            <tr style="@(contador < 4 ? "border-left: 5px solid #37BF39;" : "")">
+                <td class="img">@jugador.NombreJugador</td>
+                <td class="text-center">@jugador.PartidasGanadas</td>
+                <td class="text-center">@jugador.PartidasPerdidas</td>
+                <td class="text-center">@jugador.MinionsTotales</td>
+                <td class="text-center">@jugador.PromedioDuracionHoras</td>
+                <td class="text-center"></td>
+            </tr>
+
+            contador++; // Incrementamos el contador en cada iteración
+        }
+    </tbody>
+</table>

@@ -1,0 +1,229 @@
+﻿
+<style>
+    @@import 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700';
+
+    /* Variables */
+    $color-theme: #488bf4;
+    $color-heading: #363636;
+    $color-content: #858585;
+    $color-background: #f0f2f2;
+    $color-footer: black;
+    $color-news: #4549a8;
+    $color-community: #dc563f;
+    $color-release: #60c645;
+    $color-border: #C89B3C; /* Cambia el color del borde a #C89B3C */
+    $font-content: "Roboto Slab", serif;
+    /* General Styles */
+    html {
+        font-size: 1rem;
+    }
+
+    body {
+        background: url('https://brand.riotgames.com/static/cb5b2927e2f5f1fb7319a319746e6a86/0ecda/05_MagicExamples_3.webp') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Bracket Styles */
+    .bracket {
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        font-size: 0;
+    }
+
+        .bracket .round {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+            .bracket .round .winners > div {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .bracket .round .winners .matchups .matchup:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            .bracket .round .winners .matchups .matchup .participants {
+                border-radius: 0.25rem;
+                overflow: hidden;
+            }
+
+            .bracket .round .winners .matchups .matchup .participant {
+                box-sizing: border-box;
+                color: $color-content;
+                border: 0.05rem solid #C89B3C;
+                background: black;
+                width: 16rem;
+                height: 3rem;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+                background-size: cover;
+                background-position: center;
+                background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp');
+            }
+
+                .bracket .round .winners .matchups .matchup .participant.winner {
+                    color: $color-release;
+                    border-color: $color-release;
+                    border-left: 0.50rem solid #37BF39;
+                    background-size: cover;
+                    background-position: center;
+                    background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp');
+                }
+
+                .bracket .round .winners .matchups .matchup .participant.loser {
+                    color: $color-community;
+                    border-left: 0.50rem solid #BF3737;
+                    border-color: $color-community;
+                    opacity: 0.5;
+                }
+
+                .bracket .round .winners .matchups .matchup .participant:not(:last-child) {
+                    border-bottom: thin solid $color-background;
+                }
+
+                .bracket .round .winners .matchups .matchup .participant span {
+                    margin: 0 1.25rem;
+                    line-height: 3;
+                    font-size: 1rem;
+                    font-family: "Roboto Slab";
+                    font-weight: bold;
+                    color: #C89B3C;
+                }
+
+            .bracket .round .winners .connector.filled .line,
+            .bracket .round .winners .connector.filled.bottom .merger:after,
+            .bracket .round .winners .connector.filled.top .merger:before {
+                border-color: $color-release;
+            }
+
+            .bracket .round .winners .connector .line,
+            .bracket .round .winners .connector .merger {
+                box-sizing: border-box;
+                width: 2rem;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .bracket .round .winners .connector .line {
+                border-bottom: thin solid #C89B3C;
+                height: 4rem;
+            }
+
+            .bracket .round .winners .connector .merger {
+                position: relative;
+                height: 8rem;
+            }
+
+                .bracket .round .winners .connector .merger:before,
+                .bracket .round .winners .connector .merger:after {
+                    content: "";
+                    display: block;
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 50%;
+                    border: 0 solid;
+                    border-color: #C89B3C;
+                }
+
+                .bracket .round .winners .connector .merger:before {
+                    border-right-width: thin;
+                    border-top-width: thin;
+                }
+
+                .bracket .round .winners .connector .merger:after {
+                    border-right-width: thin;
+                    border-bottom-width: thin;
+                }
+
+            .bracket .round.quarterfinals .winners:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+
+            .bracket .round.quarterfinals .winners .matchups .matchup:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+
+            .bracket .round.semifinals .winners .matchups .matchup:not(:last-child) {
+                margin-bottom: 10rem;
+            }
+
+            .bracket .round.semifinals .winners .connector .merger {
+                height: 16rem;
+            }
+
+            .bracket .round.semifinals .winners .connector .line {
+                height: 8rem;
+            }
+
+            .bracket .round.finals .winners .matchups .matchup .participants .participant {
+                height: 3rem;
+            }
+
+            .bracket .round.finals .winners .connector .merger {
+                height: 3rem;
+            }
+
+            .bracket .round.finals .winners .connector .line {
+                height: 1.5rem;
+            }
+
+            .bracket .round.champion {
+                /* Agrega estilos para la ronda de campeones si es necesario */
+            }
+
+</style>
+
+<div class="bracket">
+    <section class="round semifinals">
+        <div class="winners">
+            <div class="matchups">
+                <div class="matchup">
+                    <div class="participants">
+                        <div class="participant ">
+                            <span>TBD</span>
+                        </div>
+                        <div class="participant">
+                            <span>TBD</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="matchup">
+                    <div class="participants">
+                        <div class="participant ">
+                            <span>TBD</span>
+                        </div>
+                        <div class="participant ">
+                            <span>TBD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="connector">
+                <div class="merger"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </section>
+    <section class="round finals">
+        <div class="winners">
+            <div class="matchups">
+                <div class="matchup">
+                    <div class="participants">
+                        <div class="participant ">
+                            <span>TBD</span>
+                        </div>
+                        <div class="participant">
+                            <span>TBD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
