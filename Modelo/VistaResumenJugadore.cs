@@ -13,5 +13,5 @@ public partial class VistaResumenJugadore
 
     public int? PartidasPerdidas { get; set; }
 
-    public double? PromedioDuracionHoras { get; set; }
+    public string? PromedioDuracionMinutosSegundos { get; set; }
 }

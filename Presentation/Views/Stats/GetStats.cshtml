@@ -1,6 +1,6 @@
-﻿@model List<Modelo.VistaResumenJugadore>
+﻿@model Presentation.Models.ViewModel
 @{
-    ViewData["Title"] = "GetStats";
+    ViewData["Title"] = "Estadisticas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -15,7 +15,8 @@
         opacity: 0.1;
         color: white;
     }
-    .btn-dark{
+
+    .btn-dark {
         background-color: #010a13;
         border-color: #010a13;
         color: #010A13;
@@ -35,43 +36,170 @@
     <h1 class="prueba" style="color: #C89B3C;"><i class="fa-solid fa-chart-line" style="color: #c89b3c;"></i> Estadisticas</h1>
     <hr style="background-color:#C89B3C; height: 2px" />
 </div>
-<div class="btn-group d-flex" role="group" aria-label="Button group with nested dropdown"  >
-    <button type="button" style="" class="btn btn-danger">General</button>
-    <button type="button" class="btn btn-dark">Ronda 1</button>
-    <button type="button" class="btn btn-dark">Ronda 2</button>
-    <button type="button" class="btn btn-dark">Ronda3</button>
-    <button type="button" class="btn btn-dark">Ronda 4</button>
+<div class="btn-group d-flex" role="group" aria-label="Button group with nested dropdown">
+    <a class="btn btn-danger" href="@Url.Action("GetStats",new {idRonda = 0})">General</a>
+    <a class="btn btn-dark" href="@Url.Action("GetStats",new {idRonda = 1})">1</a>
+    <a class="btn btn-dark" href="@Url.Action("GetStats",new {idRonda = 2})">2</a>
+    <a class="btn btn-dark" href="@Url.Action("GetStats",new {idRonda = 3})">3</a>
+    <a class="btn btn-dark" href="@Url.Action("GetStats",new {idRonda = 4})">4</a>
+    <a class="btn btn-dark" href="@Url.Action("GetStats",new {idRonda = 5})">5</a>
+    <a class="btn btn-dark" href="@Url.Action("GetStats",new {idRonda = 6})">6</a>
+    <a class="btn btn-dark" href="@Url.Action("GetStats",new {idRonda = 7})">7</a>
 </div>
 <br />
-<table class="table table-bordered table-hover" style="background-color:#010a13; border-color: #C89B3C">
-    <caption style="color: #C89B3C; font-weight:bold">Estadisticas Generales</caption>
-    <thead class="img" style="color: #C89B3C; font-weight:bold">
-        <tr>
-            <td class="text-center "><i class="fa-solid fa-circle-user" style="color: #c89b3c;"></i> Jugador</td>
-            <td class="text-center "><i class="fa-solid fa-hand-peace" style="color: #c89b3c;"></i> Victorias</td>
-            <td class="text-center "><i class="fa-solid fa-thumbs-down" style=" color: #c89b3c;"></i> Derrotas</td>
-            <td class="text-center "><i class="fa-solid fa-coins" style=" color: #c89b3c;"></i> CS total</td>
-            <td class="text-center "> <i class="fa-solid fa-clock" style=" color: #c89b3c;"></i> Promedio x Partida</td>
-            <td class="text-center ">Champs</td>
-        </tr>
-    </thead>
-    <tbody style="color: #C89B3C">
-        @{
-            int contador = 0; // Inicializamos el contador
-        }
 
-        @foreach (Modelo.VistaResumenJugadore jugador in Model)
-        {
-            <tr style="@(contador < 4 ? "border-left: 5px solid #37BF39;" : "")">
-                <td class="img">@jugador.NombreJugador</td>
-                <td class="text-center">@jugador.PartidasGanadas</td>
-                <td class="text-center">@jugador.PartidasPerdidas</td>
-                <td class="text-center">@jugador.MinionsTotales</td>
-                <td class="text-center">@jugador.PromedioDuracionHoras</td>
-                <td class="text-center"></td>
-            </tr>
 
-            contador++; // Incrementamos el contador en cada iteración
-        }
-    </tbody>
-</table>
+@{
+    int contador = 0; // Inicializamos el contador
+}
+@if (Model.Vistas == null && Model.Partidas.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-bordered " style="background-color:#010a13; border-color: #C89B3C">
+            <caption style="color: #C89B3C; font-weight:bold">Partidas Ronda @Model.Ronda</caption>
+            <thead class="img" style="color: #C89B3C; font-weight:bold">
+                <tr>
+                    <td class="text-center" style=" background-color: #073164"><i class="fa-solid fa-circle-user" style="color: #c89b3c;"></i> Jugador Azul</td>
+                    <td class="text-center" style=" background-color: #073164"><i class="fa-solid fa-coins" style="color: #c89b3c;"></i> CS</td>
+                    <td class="text-center" style=" background-color: #073164"><i class="fa-solid fa-gamepad" style="color: #c89b3c;"></i> Campeon</td>
+                    <td class="text-center"><i class="fa-solid fa-trophy" style="color: #c89b3c;"></i> Ganador</td>
+                    <td class="text-center" style=" background-color: #B30A0A"><i class="fa-solid fa-circle-user" style="color: #c89b3c;"></i> Jugador Rojo</td>
+                    <td class="text-center" style=" background-color: #B30A0A"><i class="fa-solid fa-coins" style="color: #c89b3c;"></i> CS </td>
+                    <td class="text-center" style=" background-color: #B30A0A"><i class="fa-solid fa-gamepad" style="color: #c89b3c;"></i> Campeon</td>
+                </tr>
+            </thead>
+            <tbody style="color: #C89B3C">
+                @for (int i = 0; i < Model.Partidas.Count; i += 2)
+                {
+                    var jugador1 = Model.Partidas[i];
+                    var jugador2 = i + 1 < Model.Partidas.Count ? Model.Partidas[i + 1] : null;
+
+                    <tr>
+                        <td class="text-center" style="background-color:#010a13;color: #C89B3C;">
+                            @if(jugador1.Ganador == true)
+                            {
+                                @jugador1.Username <i class="fa-solid fa-trophy" style="color: #ffffff;"></i>
+                            }
+                            else
+                            {
+                                @jugador1.Username
+                            }
+
+                        </td>
+                        <td class="text-center" style="background-color:#010a13; color: #C89B3C;">
+                            @jugador1.Minions
+                        </td>
+                        <td class="text-center" style="background-color:#010a13; color: #C89B3C;">
+                           @jugador1.Campeon
+                        </td>
+                        <td class="text-center" style="background-color: rgba(12, 124, 58, 0.5); color: #FFFFFF; font-weight:bold">
+                            @if(jugador1.Ganador == true)
+                            {
+                                <i class="fa-solid fa-caret-left" style="color: #ffffff;"></i> @jugador1.Username <br>
+                                <div class="text-center">
+                                     @jugador2.DuracionPartida min
+                                </div>                
+                            }
+                            else
+                            {
+                                @jugador1.Username2 <i class="fa-solid fa-caret-right" style="color: #ffffff;"></i> <br>
+                                <div class="text-center">
+                                    @jugador2.DuracionPartida min
+                                </div>
+                            }
+                        </td>
+                        <!-- Otros campos para jugador1 -->
+                        @if (jugador2 != null)
+                        {
+                            <td class="text-center" style="background-color:#010a13; color: #C89B3C;">
+                                @if (jugador2.Ganador == true)
+                                {
+                                    @jugador1.Username2
+
+                                    <i class="fa-solid fa-trophy" style="color: #ffffff;;"></i>
+                                }
+                                else
+                                {
+                                    @jugador1.Username2
+                                }
+                            </td>
+                            <td class="text-center" style="background-color:#010a13; color: #C89B3C;">
+                                @jugador2.Minions
+                            </td>
+                            <td class="text-center" style="background-color:#010a13; color: #C89B3C;">
+                               @jugador2.Campeon
+                            </td>
+                            <!-- Otros campos para jugador2 -->
+                        }
+                        else
+                        {
+                            <!-- Celdas vacías si no hay jugador2 -->
+                            <td></td>
+                            <td></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    @if(Model.Vistas == null)
+    {
+        <div class="text-center">
+            <h1>Aun no se juegan partidas en esta ronda</h1>
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover" style="background-color:#010a13; border-color: #C89B3C">
+            <caption style="color: #C89B3C; font-weight:bold">Estadisticas Generales</caption>
+            <thead class="img" style="color: #C89B3C; font-weight:bold">
+                <tr>
+                    <td class="text-center "><i class="fa-solid fa-circle-user" style="color: #c89b3c;"></i> Jugador</td>
+                    <td class="text-center "><i class="fa-solid fa-hand-peace" style="color: #c89b3c;"></i> Victorias</td>
+                    <td class="text-center "><i class="fa-solid fa-thumbs-down" style=" color: #c89b3c;"></i> Derrotas</td>
+                    <td class="text-center "><i class="fa-solid fa-coins" style=" color: #c89b3c;"></i> CS total</td>
+                    <td class="text-center "> <i class="fa-solid fa-clock" style=" color: #c89b3c;"></i> Promedio x Partida</td>
+                    <td class="text-center ">CS x min</td>
+                </tr>
+            </thead>
+            <tbody style="color: #C89B3C">
+                @foreach (Modelo.VistaResumenJugadore jugador in Model.Vistas)
+                {
+                    // Inicializar la variable para el promedio de Minions
+                    double promedioMinions = 0.0;
+
+                    // Verificar si PromedioDuracionMinutosSegundos no es nulo
+                    if (!string.IsNullOrEmpty(jugador.PromedioDuracionMinutosSegundos))
+                    {
+                        // Convirtiendo PromedioDuracionMinutosSegundos a minutos y segundos
+                        string[] duracionPartida = jugador.PromedioDuracionMinutosSegundos.Split(':');
+                        int minutos = int.Parse(duracionPartida[0]);
+                        int segundos = int.Parse(duracionPartida[1]);
+
+                        // Realizando el cálculo del promedio si PromedioDuracionMinutosSegundos no es nulo
+                        promedioMinions = jugador.MinionsTotales.Value / (minutos + (segundos / 60.0));
+                    }
+
+                    <tr style="@(contador < 4 ? "border-left: 5px solid #37BF39;" : "")">
+                        <td class="img">@jugador.NombreJugador</td>
+                        <td class="text-center">@jugador.PartidasGanadas</td>
+                        <td class="text-center">@jugador.PartidasPerdidas</td>
+                        <td class="text-center">@jugador.MinionsTotales</td>
+                        <td class="text-center">@jugador.PromedioDuracionMinutosSegundos</td>
+                        <td class="text-center">@promedioMinions.ToString("0.0") </td>
+                    </tr>
+
+                    contador++; // Incrementamos el contador en cada iteración
+                }
+
+            </tbody>
+        </table>
+
+    }
+ 
+}
+
+

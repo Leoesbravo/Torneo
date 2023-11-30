@@ -1,0 +1,77 @@
+﻿@model List<RondaAgrupada>
+@{
+    ViewData["Title"] = "Consultar Rondas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card-body {
+        background-size: cover;
+        background-position: center;
+    }
+
+</style>
+<div class="container">
+    @foreach(var ronda in Model)
+    {
+        <section>
+            <h5 id="___@ronda.IdRonda" style="color: #C89B3C;">Ronda @ronda.IdRonda <i class="fa-solid fa-angles-down float-end" id="_@ronda.IdRonda" onclick="Expand('@ronda.IdRonda', '_@ronda.IdRonda', '__@ronda.IdRonda','___@ronda.IdRonda' )"></i></h5>
+            <hr style="background-color:#C89B3C; height: 2px" />
+            <div id="@ronda.IdRonda" style="display: none;">
+                <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="__@ronda.IdRonda" onclick="Collapse('@ronda.IdRonda', '_@ronda.IdRonda', '__@ronda.IdRonda','___@ronda.IdRonda')"></i></h5>
+                <div class="row">
+                    @foreach (var partida in ronda.Partidas)
+                    {
+                        <div class="col-md-5">
+                            <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                                <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                                    <h5 class="card-title" style="font-weight:bold">@partida.UsernameUno </h5>
+                                    <!-- Otros detalles del jugador 1 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                                <div class="card-body text-center">
+                                    <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                                <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                                    <h5 class="card-title" style="font-weight:bold">@partida.UsernameDos  </h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>               
+                <hr style="background-color:#C89B3C; height: 2px" />
+            </div>
+        </section>
+    }
+   
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        function Expand(id, icon, iconclose, title) {
+            $('#' + id).slideDown();
+            $('#' + icon).hide();
+            $('#' + iconclose).show();
+            $('#' + title).addClass('text-center');
+
+
+        }
+
+        function Collapse(id, icon, iconclose, title) {
+            $('#' + id).slideUp();
+            $('#' + icon).show();
+            $('#' + iconclose).hide();
+            $('#' + title).removeClass('text-center');
+        }
+    </script>
+
+
+}

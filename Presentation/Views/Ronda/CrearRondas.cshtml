@@ -1,16 +1,1309 @@
-﻿@*@model List<Modelo.Partidum>
+﻿@model List<Modelo.Participante>
 @{
-    ViewData["Title"] = "Rondas";
+    ViewData["Title"] = "Crear Ronda";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <style>
     .card-body {
         background-size: cover;
         background-position: center;
     }
+
 </style>
+<div class="container">
+    <section>
+        <h5 id="title1" style="color: #C89B3C;">Ronda Uno <i class="fa-solid fa-angles-down float-end" id="iconUno" onclick="Expand('Uno', 'iconUno', 'iconUnoClose','title1' )"></i></h5>
+        <hr style="background-color:#C89B3C; height: 2px" />
+        <div id="Uno" style="display: none;">
+            <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="iconUnoClose" onclick="Collapse('Uno', 'iconUno', 'iconUnoClose','title1')"></i></h5>
+            <div class="row">
+            <div class="col-md-5">
+                <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                    <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="selectUno" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach(Modelo.Participante participante in Model)
+                                {
+                                <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+                              
+                            </select>
+                        <!-- Otros detalles del jugador 1 -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                    <div class="card-body text-center">
+                        <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                    <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option id="selectDos" style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="selectTres" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="selectCuatro" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="selectCinco" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="selectSeis" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="selectSiete" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="selectOcho" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><input type="submit" value="Confirmar Ronda" style="background-color:#C89B3C; color: #010a13" class="btn btn-warning col-md-12" id="1" onclick="CrearRonda1('1')"/></a>
+            
+            <hr style="background-color:#C89B3C; height: 2px" />
+        </div>
+    </section>
+    <section>
+        <h5 id="title2" style="color: #C89B3C;">Ronda Dos <i class="fa-solid fa-angles-down float-end" id="iconDos" onclick="Expand('Dos', 'iconDos', 'iconDosClose','title2' )"></i></h5>
+        <hr style="background-color:#C89B3C; height: 2px" />
+        <div id="Dos" style="display: none;">
+            <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="iconDosClose" onclick="Collapse('Dos', 'iconDos', 'iconDosClose','title2')"></i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select9" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                            <!-- Otros detalles del jugador 1 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select10" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select11" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select12" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select13" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select14" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select15" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select16" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><input type="submit" value="Confirmar Ronda" style="background-color:#C89B3C; color: #010a13" class="btn btn-warning col-md-12" id="2"onclick="CrearRonda2('2')" /></a>
+
+            <hr style="background-color:#C89B3C; height: 2px" />
+        </div>
+    </section>
+    <section >
+        <h5 id="title3" style="color: #C89B3C;">Ronda Tres <i class="fa-solid fa-angles-down float-end" id="iconTres" onclick="Expand('Tres', 'iconTres', 'iconTresClose','title3' )"></i></h5>
+        <hr style="background-color:#C89B3C; height: 2px" />
+        <div id="Tres" style="display: none;">
+            <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="iconTresClose" onclick="Collapse('Tres', 'iconTres', 'iconTresClose','title3')"></i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select17" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                            <!-- Otros detalles del jugador 1 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select18" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select19" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select20" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select21" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select22" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select23" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select24" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><input type="submit" value="Confirmar Ronda" style="background-color:#C89B3C; color: #010a13" class="btn btn-warning col-md-12" id="3"onclick="CrearRonda3('3')" /></a>
+
+            <hr style="background-color:#C89B3C; height: 2px" />
+        </div>
+    </section>
+    <section >
+        <h5 id="title4" style="color: #C89B3C;">Ronda Cuatro <i class="fa-solid fa-angles-down float-end" id="iconCuatro" onclick="Expand('Cuatro', 'iconCuatro', 'iconCuatroClose','title4' )"></i></h5>
+        <hr style="background-color:#C89B3C; height: 2px" />
+        <div id="Cuatro" style="display: none;">
+            <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="iconCuatroClose" onclick="Collapse('Cuatro', 'iconCuatro', 'iconCuatroClose','title4' )"></i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select25" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                            <!-- Otros detalles del jugador 1 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select26" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select27" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select28" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select29" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select30" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select31" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select32" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><input type="submit" value="Confirmar Ronda" style="background-color:#C89B3C; color: #010a13" class="btn btn-warning col-md-12" id="4"onclick="CrearRonda4('4')" /></a>
+
+            <hr style="background-color:#C89B3C; height: 2px" />
+        </div>
+    </section>
+    <section >
+        <h5 id="title5" style="color: #C89B3C;">Ronda Cinco <i class="fa-solid fa-angles-down float-end" id="iconCinco" onclick="Expand('Cinco', 'iconCinco', 'iconCincoClose','title5' )"></i></h5>
+        <hr style="background-color:#C89B3C; height: 2px" />
+        <div id="Cinco" style="display: none;">
+            <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="iconCincoClose" onclick="Collapse('Cinco', 'iconCinco', 'iconCincoClose','title5' )"></i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select33" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                            <!-- Otros detalles del jugador 1 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select34" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select35" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select36" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select37" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select38" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select39" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select40" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><input type="submit" value="Confirmar Ronda" style="background-color:#C89B3C; color: #010a13" class="btn btn-warning col-md-12" id="5" onclick="CrearRonda5('5')" /></a>
+
+            <hr style="background-color:#C89B3C; height: 2px" />
+        </div>
+    </section>
+    <section >
+        <h5 id="title6" style="color: #C89B3C;">Ronda Seis <i class="fa-solid fa-angles-down float-end" id="iconSeis" onclick="Expand('Seis', 'iconSeis', 'iconSeisClose','title6' )"></i></h5>
+        <hr style="background-color:#C89B3C; height: 2px" />
+        <div id="Seis" style="display: none;">
+            <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="iconSeisClose" onclick="Collapse('Seis', 'iconSeis', 'iconSeisClose','title6' )"></i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select41" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                            <!-- Otros detalles del jugador 1 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select42" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select43" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select44" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select45" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select46" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select47" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select48" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><input type="submit" value="Confirmar Ronda" style="background-color:#C89B3C; color: #010a13" class="btn btn-warning col-md-12" id="6"onclick="CrearRonda6('6')" /></a>
+
+            <hr style="background-color:#C89B3C; height: 2px" />
+        </div>
+    </section>
+    <section >
+        <h5 id="title7" style="color: #C89B3C;">Ronda Siete <i class="fa-solid fa-angles-down float-end" id="iconSiete" onclick="Expand('Siete', 'iconSiete', 'iconSieteClose','title7' )"></i></h5>
+        <hr style="background-color:#C89B3C; height: 2px" />
+        <div id="Siete" style="display: none;">
+            <h5 style="color: #C89B3C;"> <i class="fa-solid fa-angles-up float-end" id="iconSieteClose" onclick="Collapse('Siete', 'iconSiete', 'iconSieteClose','title7' )"></i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select49" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                            <!-- Otros detalles del jugador 1 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select50" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select51" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select52" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select53" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select54" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+                        <div class="card-body text-center border-end border-primary border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp'); ">
+                            <select id="select55" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-4" style="background-color:#010a13; color: #C8AA6E;  ">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="font-size: xx-large">VS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4" style="border-color: #C89B3C; font-weight:bold;color:#C89B3C">
+
+                        <div class="card-body text-center border-start border-danger border-5" style="background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp')">
+                            <select id="select56" class="form-select custom-select" aria-label="Default select example" style="background-color: transparent; color: #C89B3C; border: none; text-align: center; font-weight: bold; font-size: 1.25rem; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: none;">
+                                @foreach (Modelo.Participante participante in Model)
+                                {
+                                    <option style="background-color: #010a13" value="@participante.IdParticipante">@participante.UserName</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><input type="submit" value="Confirmar Ronda" style="background-color:#C89B3C; color: #010a13" class="btn btn-warning col-md-12" id="7" onclick="CrearRonda7('7')" /></a>
+
+            <hr style="background-color:#C89B3C; height: 2px" />
+        </div>
+    </section>
+
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts
+{
+    <script>
+        function CrearRonda1(sectionId) {
+
+            var ronda = {
+                idronda: parseInt(sectionId),
+                oponente1: parseInt($('#selectUno').val()),
+                oponente2: parseInt($('#selectDos').val()),
+                oponente3: parseInt($('#selectTres').val()),
+                oponente4: parseInt($('#selectCuatro').val()),
+                oponente5: parseInt($('#selectCinco').val()),
+                oponente6: parseInt($('#selectSeis').val()),
+                oponente7: parseInt($('#selectSiete').val()),
+                oponente8: parseInt($('#selectOcho').val())
+            };
+            console.log(ronda)
+            $.ajax({
+                type: "POST",
+                url: "/Ronda/CrearRondas",
+                dataType: 'json',
+                data: JSON.stringify(ronda),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert('Se ha confirmado la ronda');
+                },
+                error: function (error) {
+                    console.error("Error al enviar la solicitud AJAX", error);
+                }
+            });
+        }
+        function CrearRonda2(sectionId) {
+
+            var ronda = {
+                idronda: parseInt(sectionId),
+                oponente1: parseInt($('#select9').val()),
+                oponente2: parseInt($('#select10').val()),
+                oponente3: parseInt($('#select11').val()),
+                oponente4: parseInt($('#select12').val()),
+                oponente5: parseInt($('#select13').val()),
+                oponente6: parseInt($('#select14').val()),
+                oponente7: parseInt($('#select15').val()),
+                oponente8: parseInt($('#select16').val())
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Ronda/CrearRondas",
+                dataType: 'json',
+                data: JSON.stringify(ronda),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert('Se ha confirmado la ronda');
+                },
+                error: function (error) {
+                    console.error("Error al enviar la solicitud AJAX", error);
+                }
+            });
+        }
+        function CrearRonda3(sectionId) {
+
+            var ronda = {
+                idronda: parseInt(sectionId),
+                oponente1: parseInt($('#select17').val()),
+                oponente2: parseInt($('#select18').val()),
+                oponente3: parseInt($('#select19').val()),
+                oponente4: parseInt($('#select20').val()),
+                oponente5: parseInt($('#select21').val()),
+                oponente6: parseInt($('#select22').val()),
+                oponente7: parseInt($('#select23').val()),
+                oponente8: parseInt($('#select24').val())
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Ronda/CrearRondas",
+                dataType: 'json',
+                data: JSON.stringify(ronda),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert('Se ha confirmado la ronda');
+                },
+                error: function (error) {
+                    console.error("Error al enviar la solicitud AJAX", error);
+                }
+            });
+        }
+        function CrearRonda4(sectionId) {
+
+            var ronda = {
+                idronda: parseInt(sectionId),
+                oponente1: parseInt($('#select25').val()),
+                oponente2: parseInt($('#select26').val()),
+                oponente3: parseInt($('#select27').val()),
+                oponente4: parseInt($('#select28').val()),
+                oponente5: parseInt($('#select29').val()),
+                oponente6: parseInt($('#select30').val()),
+                oponente7: parseInt($('#select31').val()),
+                oponente8: parseInt($('#select32').val())
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Ronda/CrearRondas",
+                dataType: 'json',
+                data: JSON.stringify(ronda),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert('Se ha confirmado la ronda');
+                },
+                error: function (error) {
+                    console.error("Error al enviar la solicitud AJAX", error);
+                }
+            });
+        }
+        function CrearRonda5(sectionId) {
+
+            var ronda = {
+                idronda: parseInt(sectionId),
+                oponente1: parseInt($('#select33').val()),
+                oponente2: parseInt($('#select34').val()),
+                oponente3: parseInt($('#select35').val()),
+                oponente4: parseInt($('#select36').val()),
+                oponente5: parseInt($('#select37').val()),
+                oponente6: parseInt($('#select38').val()),
+                oponente7: parseInt($('#select39').val()),
+                oponente8: parseInt($('#select40').val())
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Ronda/CrearRondas",
+                dataType: 'json',
+                data: JSON.stringify(ronda),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert('Se ha confirmado la ronda');
+                },
+                error: function (error) {
+                    console.error("Error al enviar la solicitud AJAX", error);
+                }
+            });
+        }
+        function CrearRonda6(sectionId) {
+
+            var ronda = {
+                idronda: parseInt(sectionId),
+                oponente1: parseInt($('#select41').val()),
+                oponente2: parseInt($('#select42').val()),
+                oponente3: parseInt($('#select43').val()),
+                oponente4: parseInt($('#select44').val()),
+                oponente5: parseInt($('#select45').val()),
+                oponente6: parseInt($('#select46').val()),
+                oponente7: parseInt($('#select47').val()),
+                oponente8: parseInt($('#select48').val())
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Ronda/CrearRondas",
+                dataType: 'json',
+                data: JSON.stringify(ronda),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert('Se ha confirmado la ronda');
+                },
+                error: function (error) {
+                    console.error("Error al enviar la solicitud AJAX", error);
+                }
+            });
+        }
+        function CrearRonda7(sectionId) {
+
+            var ronda = {
+                idronda: parseInt(sectionId),
+                oponente1: parseInt($('#select49').val()),
+                oponente2: parseInt($('#select50').val()),
+                oponente3: parseInt($('#select51').val()),
+                oponente4: parseInt($('#select52').val()),
+                oponente5: parseInt($('#select53').val()),
+                oponente6: parseInt($('#select54').val()),
+                oponente7: parseInt($('#select55').val()),
+                oponente8: parseInt($('#select56').val())
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Ronda/CrearRondas",
+                dataType: 'json',
+                data: JSON.stringify(ronda),
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert('Se ha confirmado la ronda');
+                },
+                error: function (error) {
+                    console.error("Error al enviar la solicitud AJAX", error);
+                }
+            });
+        }
+        function Expand(id, icon, iconclose, title) {
+            $('#' + id).slideDown();
+            $('#' + icon).hide();
+            $('#' + iconclose).show();
+            $('#' + title).addClass('text-center');
+
+            
+        }
+
+        function Collapse(id, icon, iconclose, title) {
+            $('#' + id).slideUp();
+            $('#' + icon).show();
+            $('#' + iconclose).hide();
+            $('#' + title).removeClass('text-center');
+        }
+
+    </script>
+}
+@*@model List<Modelo.Partidum>
+@{
+    ViewData["Title"] = "Rondas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
 <h2 class="text-center" style="color: #C89B3C">Enfrentamientos Generados</h2>
 <hr style="background-color:#C89B3C; height: 2px" />
 @if (Model != null && Model.Enfrentamientos.Count > 0)

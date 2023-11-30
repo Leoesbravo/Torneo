@@ -11,6 +11,8 @@ public partial class Partidum
 
     public int? IdParticipanteDos { get; set; }
 
+    public int? IdRonda { get; set; }
+
     public string? Duracion { get; set; }
 
     public virtual ICollection<DetallePartidum> DetallePartida { get; set; } = new List<DetallePartidum>();
@@ -18,4 +20,6 @@ public partial class Partidum
     public virtual Participante? IdParticipanteDosNavigation { get; set; }
 
     public virtual Participante? IdParticipanteUnoNavigation { get; set; }
+
+    public virtual Rondum? IdRondaNavigation { get; set; }
 }

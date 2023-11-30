@@ -3,32 +3,46 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Presentation</title>
+    <title>@ViewData["Title"] - Torneo LOL</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Presentation.styles.css" asp-append-version="true" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    @Html.Partial("_Favicons")
 </head>
 <body style="background-color:#010a13; cursor: url(https://brand.riotgames.com/images/league-of-legends/cursor.png), auto;">
+    <style>
+
+
+
+    </style>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3" style="border-bottom: solid; border-bottom-color: #C8AA6E; background-color:#010a13">
             <div class="container-fluid">
-                <a class="navbar-brand border-end" asp-area="" asp-controller="Home" asp-action="Index" style="color:#010a13"><img src="https://static.tildacdn.com/tild6363-3366-4131-b062-323333633239/600px-League_of_Lege.png" height="40px" width="38px" />a </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand border-end" asp-area="" asp-controller="Home" asp-action="Index" style="color:#010a13">
+                    <img src="https://static.tildacdn.com/tild6363-3366-4131-b062-323333633239/600px-League_of_Lege.png" height="40px" width="38px" />a
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"><i class="fa-solid fa-bars" style="color:#C8AA6E"></i> </span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-grow-1">
-
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" style="color: #C8AA6E; font-weight:bold">Opciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Ronda" asp-action="CrearRondas" style="color: #C8AA6E; font-weight:bold">Rondas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Stats" asp-action="SetStats" style="color: #C8AA6E; font-weight:bold">Stats</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

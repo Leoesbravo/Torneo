@@ -1,4 +1,6 @@
-﻿
+﻿﻿@{
+    ViewData["Title"] = "Bracket";
+}
 <style>
     @@import 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700';
 
@@ -176,54 +178,86 @@
                 /* Agrega estilos para la ronda de campeones si es necesario */
             }
 
+    @@media (max-width: 768px) {
+        .bracket {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+            .bracket .round .winners .matchups .matchup .participants .participant {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .bracket .round .winners .connector .line,
+            .bracket .round .winners .connector .merger {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .bracket .round.quarterfinals .winners .matchups .matchup .participants .participant,
+            .bracket .round.semifinals .winners .matchups .matchup .participants .participant,
+            .bracket .round.finals .winners .matchups .matchup .participants .participant {
+                height: 4rem;
+            }
+
+            .bracket .round.semifinals .winners .connector .merger,
+            .bracket .round.semifinals .winners .connector .line {
+                height: 8rem;
+            }
+
+            .bracket .round.finals .winners .connector .merger,
+            .bracket .round.finals .winners .connector .line {
+                height: 4rem;
+            }
+    }
 </style>
-
-<div class="bracket">
-    <section class="round semifinals">
-        <div class="winners">
-            <div class="matchups">
-                <div class="matchup">
-                    <div class="participants">
-                        <div class="participant ">
-                            <span>TBD</span>
+    <div class="bracket">
+        <section class="round semifinals">
+            <div class="winners">
+                <div class="matchups">
+                    <div class="matchup">
+                        <div class="participants">
+                            <div class="participant ">
+                                <span>TBD</span>
+                            </div>
+                            <div class="participant">
+                                <span>TBD</span>
+                            </div>
                         </div>
-                        <div class="participant">
-                            <span>TBD</span>
+                    </div>
+                    <div class="matchup">
+                        <div class="participants">
+                            <div class="participant ">
+                                <span>TBD</span>
+                            </div>
+                            <div class="participant ">
+                                <span>TBD</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="matchup">
-                    <div class="participants">
-                        <div class="participant ">
-                            <span>TBD</span>
-                        </div>
-                        <div class="participant ">
-                            <span>TBD</span>
+                <div class="connector">
+                    <div class="merger"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </section>
+        <section class="round finals">
+            <div class="winners">
+                <div class="matchups">
+                    <div class="matchup">
+                        <div class="participants">
+                            <div class="participant ">
+                                <span>TBD</span>
+                            </div>
+                            <div class="participant">
+                                <span>TBD</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="connector">
-                <div class="merger"></div>
-                <div class="line"></div>
-            </div>
-        </div>
-    </section>
-    <section class="round finals">
-        <div class="winners">
-            <div class="matchups">
-                <div class="matchup">
-                    <div class="participants">
-                        <div class="participant ">
-                            <span>TBD</span>
-                        </div>
-                        <div class="participant">
-                            <span>TBD</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
+        </section>
+    </div>

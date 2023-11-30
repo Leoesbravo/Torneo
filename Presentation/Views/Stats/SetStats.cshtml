@@ -1,0 +1,197 @@
+﻿@model List<Modelo.VistaPartidum>
+@{
+    ViewData["Title"] = "SetStats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 48px; /* Ajusta el ancho según tus preferencias */
+        height: 27px; /* Ajusta la altura según tus preferencias */
+    }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #073164;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 21px; /* Ajusta la altura del control deslizante según tus preferencias */
+            width: 21px; /* Ajusta el ancho del control deslizante según tus preferencias */
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #B30A0A;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    .img {
+        background-size: cover;
+        background-position: center;
+        background-image: url('https://brand.riotgames.com/static/460f3585d78de6c1527c3f37b3ed2891/0ecda/05_MagicExamples_2.webp');
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #005A82;
+        opacity: 0.1;
+        color: white;
+    }
+
+    .btn-dark {
+        background-color: #010a13;
+        border-color: #010a13;
+        color: #010A13;
+        background: linear-gradient(to right, #785A28, #C89B3C);
+        font-size: large;
+    }
+
+    .btn-danger {
+
+        background-color: #010a13;
+        border-color: #010a13;
+        color: #010A13;
+        background: linear-gradient(to right, #005A82, #0AC8B9);
+        font-size: large;
+    }
+</style>
+<div class="text-center">
+    <h1 class="prueba" style="color: #C89B3C;"><i class="fa-solid fa-chart-line" style="color: #c89b3c;"></i> Estadisticas</h1>
+    <hr style="background-color:#C89B3C; height: 2px" />
+</div>
+
+<div class="btn-group d-flex" role="group" aria-label="Button group with nested dropdown">
+    <a href="@Url.Action("SetStats", new {idRonda = 1})" class="btn btn-dark">1</a>
+    <a href="@Url.Action("SetStats", new {idRonda = 2})" class="btn btn-dark">2</a>
+    <a href="@Url.Action("SetStats", new {idRonda = 3})" class="btn btn-dark">3</a>
+    <a href="@Url.Action("SetStats", new {idRonda = 4})" class="btn btn-dark">4</a>
+    <a href="@Url.Action("SetStats", new {idRonda = 5})" class="btn btn-dark">5</a>
+    <a href="@Url.Action("SetStats", new {idRonda = 6})" class="btn btn-dark">6</a>
+    <a href="@Url.Action("SetStats", new {idRonda = 7})" class="btn btn-dark">7</a>
+   
+</div>
+<br />
+@if(Model != null && Model.Count > 0 )
+{
+    <div class="table-responsive">
+        <table class="table table-bordered" style="background-color:#010a13; border-color: #C89B3C">
+            <caption style="color: #C89B3C; font-weight:bold">Partidas</caption>
+            <thead class="img" style="color: #C89B3C; font-weight:bold">
+                <tr>
+                    <td class="text-center" style=" background-color: #073164"><i class="fa-solid fa-circle-user" style="color: #c89b3c;"></i> Jugador Azul</td>
+                    <td class="text-center" style=" background-color: #073164"><i class="fa-solid fa-coins" style="color: #c89b3c;"></i> CS</td>
+                    <td class="text-center" style=" background-color: #073164"><i class="fa-solid fa-gamepad" style="color: #c89b3c;"></i> Campeon</td>
+                    <td class="text-center"><i class="fa-solid fa-trophy" style="color: #c89b3c;"></i> Ganador</td>
+                    <td class="text-center" style=" background-color: #B30A0A"><i class="fa-solid fa-circle-user" style="color: #c89b3c;"></i> Jugador Rojo</td>
+                    <td class="text-center" style=" background-color: #B30A0A"><i class="fa-solid fa-coins" style="color: #c89b3c;"></i> CS </td>
+                    <td class="text-center" style=" background-color: #B30A0A"><i class="fa-solid fa-gamepad" style="color: #c89b3c;"></i> Campeon</td>
+                    <td class="text-center"><i class="fa-solid fa-clock" style="color: #c89b3c;"></i> </td>
+                    <td class="text-center"> Guardar</td>
+                </tr>
+            </thead>
+            <tbody style="color: #C89B3C">
+                @foreach (var jugador in Model)
+                {
+                    <tr>
+                        @using (Html.BeginForm("SetStats", "Stats", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <input type="text" hidden value="@jugador.IdParticipanteUno" name="IdUsuarioUno" />
+                            <input type="text" hidden value="@jugador.IdPartida" name="IdPartida" />
+                            <input type="text" hidden value="@jugador.IdParticipanteDos" name="IdUsuarioDos" />
+                            <input type="text" hidden value="" name="IdGanador" id="ganador_@jugador.IdPartida" />
+                            <td class="text-center">
+                                <input type="text" name="UsernameUno" value="@jugador.UsernameUno" style="background-color:#010a13; color: #C89B3C; border: none; text-align: center; width: 100px" readonly />
+                            </td>
+                            <td class="text-center">
+                                <input type="text" name="CsUno" placeholder="CS" style="background-color:#010a13; color: #C89B3C; border: none; text-align: center; width: 50px;" />
+                            </td>
+                            <td class="text-center">
+                                <input type="text" name="CampeonUno" placeholder="Campeon" style="background-color:#010a13; color: #C89B3C; border: none; text-align: center; width: 110px" />
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <label class="switch">
+                                        <input type="checkbox" id="partida_@jugador.IdPartida" onchange="checkValue('partida_@jugador.IdPartida','ganador_@jugador.IdPartida')">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <input type="text" name="UsernameDos" value="@jugador.UsernameDos" style="background-color:#010a13; color: #C89B3C; border: none; text-align: center; width: 100px" readonly />
+                            </td>
+                            <td class="text-center">
+                                <input type="text" name="CsDos" placeholder="CS" style="background-color:#010a13; color: #C89B3C; border: none; text-align: center; width: 50px;  width: 50px" />
+                            </td>
+                            <td class="text-center">
+                                <input type="text" name="CampeonDos" placeholder="Campeon" style="background-color:#010a13; color: #C89B3C; border: none; text-align: center; width: 110px" />
+                            </td>
+                            <td class="text-center">
+                                <input type="text" name="Duracion" placeholder="@jugador.Duracion" style="background-color:#010a13; color: #C89B3C; border: none; text-align: center;width: 50px;" />
+                            </td>
+                            <td class="text-center">
+                                <input type="submit" class="btn btn-dark" style="  height: 20px; font-size:x-small" value="Guardar">
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+   
+
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts
+{
+    <script>
+        function checkValue(id,textbox) {
+            var checkbox = document.getElementById(id);
+            if (checkbox.checked) {
+               $('#' + textbox).val('Red');
+            } else {
+                $('#' + textbox).val('Blue');
+            }
+        }
+    </script>
+}
